@@ -1,0 +1,29 @@
+# Project: 11-4
+# Makefile created by Dev-C++ 5.2.0.3
+
+CPP      = g++.exe -D_DEBUG_
+CC       = gcc.exe -D_DEBUG_
+WINDRES  = windres.exe
+OBJ      = main.o $(RES)
+LINKOBJ  = main.o $(RES)
+LIBS     = -L"E:/я╦ювобть/DevCpp/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc  
+INCS     = -I"E:/я╦ювобть/DevCpp/Dev-Cpp/MinGW32/include" 
+CXXINCS  = -I"E:/я╦ювобть/DevCpp/Dev-Cpp/MinGW32/include" 
+BIN      = 11-4.exe
+CXXFLAGS = $(CXXINCS)   -g3
+CFLAGS   = $(INCS)   -g3
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before 11-4.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "11-4.exe" $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
