@@ -1,24 +1,23 @@
-// TODO:
 #include<bits/stdc++.h>
-using namespace std;
 #define MAX_N 30
+using namespace std;
 map<int, int> m;
-multimap<int, int> m2;
+int v[MAX_N];
+inline bool vcmp(int a, int b){ return m.at(a) > m.at(b);}
 int main() {
-    int x, cnt=0;
-    while(cin >> x && x!=-1){
+    int x,len=0;
+    while(scanf("%d", &x) && x!=-1){
+        if(!m.count(x)) v[len++]=x;
         ++m[x];
-        ++cnt;
     }
-    printf("cnt: %d\n", cnt);
-    map<int, int>::iterator it;
-    for(it=m.begin();it!=m.end();++it){
-        printf("%d: %d times\n", it->first, it->second);
-        m2.insert(make_pair<int, int>(it->second, it->first));
+    printf("cnt:%d\n", len);
+    for(int i=0;i<len;i++){
+        printf("%d:%d ", v[i], m[v[i]]);
     }
-    printf("---------\n", cnt);
-    multimap<int, int>::reverse_iterator rit;
-    for(rit=m2.rbegin();rit!=m2.rend();++rit){
-        printf("%d: %d times\n", rit->second, rit->first);
+    printf("\n");
+    sort(v, v+len, vcmp);
+    for(int i=0;i<len;i++){
+        printf("%d:%d ", v[i], m[v[i]]);
     }
+    printf("\n");
 }
